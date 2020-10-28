@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        TexterifyManager.shared.copyLocalisationFiles()
-        TexterifyManager.shared.getUpdatedString()
+//        TexterifyManager.shared.copyLocalisationFiles()
+//        TexterifyManager.shared.getUpdatedString()
     }
     
 }

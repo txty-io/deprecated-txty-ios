@@ -13,6 +13,7 @@ class Downloader {
     var projectId: String
     var exportConfigId: String
     var customBundleName = "TexterifyLocalization.bundle"
+    let suffix = ".lproj"
     
     init(baseUrl: String, projectId: String, exportConfigId: String) {
         self.baseUrl = baseUrl
@@ -22,7 +23,14 @@ class Downloader {
     
     func downloadLocalizationBundle() {
         let locale = Locale.current
-        // TODO: build url, using test for now
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = baseUrl
+        components.path = "api/v1/projects/\(projectId)/export_configs/\(exportConfigId)/release"
+        components.queryItems = [
+            URLQueryItem(name: "locale", value: "\(locale)")
+        ]
+        
         guard let url = URL(string: "") else {
             return
         }
