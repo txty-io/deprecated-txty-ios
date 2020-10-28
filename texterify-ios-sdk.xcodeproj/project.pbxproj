@@ -1,0 +1,577 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1474A684250A5A99004F3D98 /* texterify_ios_sdk.h in Headers */ = {isa = PBXBuildFile; fileRef = 1474A682250A5A99004F3D98 /* texterify_ios_sdk.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1474A6A4250A6102004F3D98 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1474A6A3250A6102004F3D98 /* .swiftlint.yml */; };
+		1474A6A6250A61E8004F3D98 /* TexterifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474A6A5250A61E8004F3D98 /* TexterifyManager.swift */; };
+		1474A6B0250A65E1004F3D98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474A6AF250A65E1004F3D98 /* AppDelegate.swift */; };
+		1474A6B2250A65E1004F3D98 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474A6B1250A65E1004F3D98 /* SceneDelegate.swift */; };
+		1474A6B4250A65E1004F3D98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474A6B3250A65E1004F3D98 /* ViewController.swift */; };
+		1474A6B7250A65E1004F3D98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1474A6B5250A65E1004F3D98 /* Main.storyboard */; };
+		1474A6B9250A65E2004F3D98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1474A6B8250A65E2004F3D98 /* Assets.xcassets */; };
+		1474A6BC250A65E3004F3D98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1474A6BA250A65E2004F3D98 /* LaunchScreen.storyboard */; };
+		1474A6C5250A6848004F3D98 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1474A6C7250A6848004F3D98 /* Localizable.strings */; };
+		14BA08822510AAF200CA22C6 /* texterify_ios_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1474A67F250A5A99004F3D98 /* texterify_ios_sdk.framework */; };
+		14BA08832510AAF200CA22C6 /* texterify_ios_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1474A67F250A5A99004F3D98 /* texterify_ios_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		14E82F9525493CFF005F8EE6 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E82F9425493CFF005F8EE6 /* Downloader.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		14BA08842510AAF200CA22C6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1474A676250A5A99004F3D98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1474A67E250A5A99004F3D98;
+			remoteInfo = "texterify-ios-sdk";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		14BA08862510AAF200CA22C6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				14BA08832510AAF200CA22C6 /* texterify_ios_sdk.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1474A67F250A5A99004F3D98 /* texterify_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = texterify_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1474A682250A5A99004F3D98 /* texterify_ios_sdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = texterify_ios_sdk.h; sourceTree = "<group>"; };
+		1474A683250A5A99004F3D98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1474A6A3250A6102004F3D98 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		1474A6A5250A61E8004F3D98 /* TexterifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TexterifyManager.swift; sourceTree = "<group>"; };
+		1474A6AD250A65E1004F3D98 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1474A6AF250A65E1004F3D98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1474A6B1250A65E1004F3D98 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1474A6B3250A65E1004F3D98 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1474A6B6250A65E1004F3D98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1474A6B8250A65E2004F3D98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1474A6BB250A65E2004F3D98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1474A6BD250A65E3004F3D98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1474A6C6250A6848004F3D98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1474A6CA250B62B2004F3D98 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		14E82F9425493CFF005F8EE6 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1474A67C250A5A99004F3D98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1474A6AA250A65E1004F3D98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14BA08822510AAF200CA22C6 /* texterify_ios_sdk.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1474A675250A5A99004F3D98 = {
+			isa = PBXGroup;
+			children = (
+				1474A6A3250A6102004F3D98 /* .swiftlint.yml */,
+				1474A681250A5A99004F3D98 /* texterify-ios-sdk */,
+				1474A6AE250A65E1004F3D98 /* Example */,
+				1474A680250A5A99004F3D98 /* Products */,
+				14BA08812510AAF200CA22C6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1474A680250A5A99004F3D98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1474A67F250A5A99004F3D98 /* texterify_ios_sdk.framework */,
+				1474A6AD250A65E1004F3D98 /* Example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1474A681250A5A99004F3D98 /* texterify-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				1474A682250A5A99004F3D98 /* texterify_ios_sdk.h */,
+				1474A683250A5A99004F3D98 /* Info.plist */,
+				1474A6A5250A61E8004F3D98 /* TexterifyManager.swift */,
+				14E82F9425493CFF005F8EE6 /* Downloader.swift */,
+			);
+			path = "texterify-ios-sdk";
+			sourceTree = "<group>";
+		};
+		1474A6AE250A65E1004F3D98 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				1474A6AF250A65E1004F3D98 /* AppDelegate.swift */,
+				1474A6B1250A65E1004F3D98 /* SceneDelegate.swift */,
+				1474A6B3250A65E1004F3D98 /* ViewController.swift */,
+				1474A6B5250A65E1004F3D98 /* Main.storyboard */,
+				1474A6B8250A65E2004F3D98 /* Assets.xcassets */,
+				1474A6BA250A65E2004F3D98 /* LaunchScreen.storyboard */,
+				1474A6BD250A65E3004F3D98 /* Info.plist */,
+				1474A6C7250A6848004F3D98 /* Localizable.strings */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		14BA08812510AAF200CA22C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1474A67A250A5A99004F3D98 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1474A684250A5A99004F3D98 /* texterify_ios_sdk.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1474A67E250A5A99004F3D98 /* texterify-ios-sdk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1474A687250A5A99004F3D98 /* Build configuration list for PBXNativeTarget "texterify-ios-sdk" */;
+			buildPhases = (
+				1474A67A250A5A99004F3D98 /* Headers */,
+				1474A67B250A5A99004F3D98 /* Sources */,
+				1474A67C250A5A99004F3D98 /* Frameworks */,
+				1474A67D250A5A99004F3D98 /* Resources */,
+				1474A6A2250A607A004F3D98 /* SwiftLint */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "texterify-ios-sdk";
+			productName = "texterify-ios-sdk";
+			productReference = 1474A67F250A5A99004F3D98 /* texterify_ios_sdk.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		1474A6AC250A65E1004F3D98 /* Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1474A6BE250A65E3004F3D98 /* Build configuration list for PBXNativeTarget "Example" */;
+			buildPhases = (
+				1474A6A9250A65E1004F3D98 /* Sources */,
+				1474A6AA250A65E1004F3D98 /* Frameworks */,
+				1474A6AB250A65E1004F3D98 /* Resources */,
+				14BA08862510AAF200CA22C6 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14BA08852510AAF200CA22C6 /* PBXTargetDependency */,
+			);
+			name = Example;
+			productName = Example;
+			productReference = 1474A6AD250A65E1004F3D98 /* Example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1474A676250A5A99004F3D98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "All About Apps";
+				TargetAttributes = {
+					1474A67E250A5A99004F3D98 = {
+						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
+					};
+					1474A6AC250A65E1004F3D98 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 1474A679250A5A99004F3D98 /* Build configuration list for PBXProject "texterify-ios-sdk" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				de,
+			);
+			mainGroup = 1474A675250A5A99004F3D98;
+			productRefGroup = 1474A680250A5A99004F3D98 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1474A67E250A5A99004F3D98 /* texterify-ios-sdk */,
+				1474A6AC250A65E1004F3D98 /* Example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1474A67D250A5A99004F3D98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1474A6A4250A6102004F3D98 /* .swiftlint.yml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1474A6AB250A65E1004F3D98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1474A6BC250A65E3004F3D98 /* LaunchScreen.storyboard in Resources */,
+				1474A6C5250A6848004F3D98 /* Localizable.strings in Resources */,
+				1474A6B9250A65E2004F3D98 /* Assets.xcassets in Resources */,
+				1474A6B7250A65E1004F3D98 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1474A6A2250A607A004F3D98 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1474A67B250A5A99004F3D98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1474A6A6250A61E8004F3D98 /* TexterifyManager.swift in Sources */,
+				14E82F9525493CFF005F8EE6 /* Downloader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1474A6A9250A65E1004F3D98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1474A6B4250A65E1004F3D98 /* ViewController.swift in Sources */,
+				1474A6B0250A65E1004F3D98 /* AppDelegate.swift in Sources */,
+				1474A6B2250A65E1004F3D98 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14BA08852510AAF200CA22C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1474A67E250A5A99004F3D98 /* texterify-ios-sdk */;
+			targetProxy = 14BA08842510AAF200CA22C6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1474A6B5250A65E1004F3D98 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1474A6B6250A65E1004F3D98 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1474A6BA250A65E2004F3D98 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1474A6BB250A65E2004F3D98 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1474A6C7250A6848004F3D98 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1474A6C6250A6848004F3D98 /* en */,
+				1474A6CA250B62B2004F3D98 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1474A685250A5A99004F3D98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1474A686250A5A99004F3D98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1474A688250A5A99004F3D98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2B6FWRNH2M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "texterify-ios-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "allaboutapps.texterify-ios-sdk";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1474A689250A5A99004F3D98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2B6FWRNH2M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "texterify-ios-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "allaboutapps.texterify-ios-sdk";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1474A6BF250A65E3004F3D98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = allaboutapps.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1474A6C0250A65E3004F3D98 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Example/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = allaboutapps.Example;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1474A679250A5A99004F3D98 /* Build configuration list for PBXProject "texterify-ios-sdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1474A685250A5A99004F3D98 /* Debug */,
+				1474A686250A5A99004F3D98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1474A687250A5A99004F3D98 /* Build configuration list for PBXNativeTarget "texterify-ios-sdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1474A688250A5A99004F3D98 /* Debug */,
+				1474A689250A5A99004F3D98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1474A6BE250A65E3004F3D98 /* Build configuration list for PBXNativeTarget "Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1474A6BF250A65E3004F3D98 /* Debug */,
+				1474A6C0250A65E3004F3D98 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1474A676250A5A99004F3D98 /* Project object */;
+}
