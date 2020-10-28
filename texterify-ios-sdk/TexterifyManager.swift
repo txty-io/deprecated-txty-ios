@@ -9,12 +9,25 @@
 import Foundation
 
 public class TexterifyManager {
-    public static var shared = TexterifyManager()
+//    public static var shared = TexterifyManager()
     static let bundleName = "TexterifyLocalization.bundle"
     static let suffix = ".lproj"
-    static var baseUrl = ""
-    static var projectId = ""
-    static var exportConfigId = ""
+    var baseUrl = ""
+    var projectId = ""
+    var exportConfigId = ""
+
+    public init(baseUrl: String, projectId: String, exportConfigId: String) {
+        self.baseUrl = baseUrl
+        self.projectId = projectId
+        self.exportConfigId = exportConfigId
+    }
+    
+    public func getUpdatedStrings() {
+        let downloader = Downloader(baseUrl: self.baseUrl, projectId: self.projectId, exportConfigId: self.exportConfigId)
+        downloader.downloadLocalizationBundle(completion: {
+            print("Done")
+        })
+    }
     
     // Derprecated: Copy files from main.bundle
     public func copyLocalisationFiles() {
