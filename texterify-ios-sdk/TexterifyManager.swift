@@ -9,7 +9,6 @@
 import Foundation
 
 public class TexterifyManager {
-//    public static var shared = TexterifyManager()
     static let bundleName = "TexterifyLocalization.bundle"
     static let suffix = ".lproj"
     var baseUrl = ""
@@ -24,27 +23,37 @@ public class TexterifyManager {
     
     public func getUpdatedStrings() {
         let downloader = Downloader(baseUrl: self.baseUrl, projectId: self.projectId, exportConfigId: self.exportConfigId)
-        downloader.downloadLocalizationBundle(completion: {
-            print("Done")
-        })
+        downloader.downloadLocalizationBundle(completion: self.constructStringFiles)
     }
     
-    // Derprecated: Copy files from main.bundle
-    public func copyLocalisationFiles() {
+    func constructStringFiles() {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let jsonFile = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("strings.json")
+        
         do {
-            let localisationDirectorys = try FileManager.default.contentsOfDirectory(atPath: Bundle.main.bundlePath).filter { $0.contains(TexterifyManager.suffix) }
-            let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-            if Bundle(path: "\(documentDirectoryPath)/\(TexterifyManager.bundleName)") == nil {
-                let documentDirectoryUrl = URL(fileURLWithPath: documentDirectoryPath)
-                try FileManager.default.createDirectory(at: documentDirectoryUrl.appendingPathComponent(TexterifyManager.bundleName), withIntermediateDirectories: true, attributes: nil)
+            let decoder = JSONDecoder()
+            let data = try Data(contentsOf: jsonFile)
+            let jsonData = try decoder.decode(Model.self, from: data)
+            // Create custom bundle if it does not exist
+            if Bundle(path: "\(documentDirectory.path)/\(TexterifyManager.bundleName)") == nil {
+                try FileManager.default.createDirectory(at: documentDirectory.appendingPathComponent(TexterifyManager.bundleName), withIntermediateDirectories: true, attributes: nil)
             }
-            for directory in localisationDirectorys {
-                try FileManager.default.copyItem(atPath: Bundle.main.bundlePath + "/" + directory, toPath: documentDirectoryPath + "/\(TexterifyManager.bundleName)/" + directory)
+            let localizationFolderURL = documentDirectory.appendingPathComponent(TexterifyManager.bundleName).appendingPathComponent(jsonData.data.languageCode + TexterifyManager.suffix)
+            if !FileManager.default.fileExists(atPath: localizationFolderURL.path) {
+                try FileManager.default.createDirectory(at: localizationFolderURL, withIntermediateDirectories: true, attributes: nil)
+            }
+            let localizationFile = localizationFolderURL.appendingPathComponent("Localization.strings")
+            if FileManager.default.fileExists(atPath: localizationFile.path) {
+                try FileManager.default.removeItem(at: localizationFile)
+            }
+            FileManager.default.createFile(atPath: localizationFile.path, contents: nil, attributes: nil)
+            for pair in jsonData.data.texts {
+                let stringChange = "\"\(pair.key)\":\"\(pair.value)\";"
+                try stringChange.write(to: localizationFile, atomically: true, encoding: .utf8)
             }
             
         } catch let error as NSError {
-            // TODO: Deal with error
-            print(error.localizedDescription)
+            print(error)
         }
     }
     
@@ -54,20 +63,5 @@ public class TexterifyManager {
         let localizationBundle = Bundle(path: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/\(bundleName)")
         return NSLocalizedString(key, tableName: nil, bundle: localizationBundle!, value: "", comment: "")
     }
-    
-    // TODO: Update files
-    // Derprecated: Using test json
-//    func updateFiles(stringChanges: [StringChange]) {
-//        let documentDir = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
-//        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/\(TexterifyManager.bundleName)/" + "/en.lproj/Localizable.strings"
-//        var dict = NSMutableDictionary(contentsOfFile: path)
-//        for change in stringChanges {
-//            print(change.key)
-//            if dict?[change.key] != nil {
-//                dict?.setValue(change.value, forKey: change.key)
-//            }
-//        }
-//        let string = dict?.descriptionInStringsFileFormat
-//        try? string?.write(to: documentDir.appendingPathComponent(TexterifyManager.bundleName).appendingPathComponent("en.lproj").appendingPathComponent("/Localizable.strings"), atomically: true, encoding: .utf8)
-//    }
+
 }

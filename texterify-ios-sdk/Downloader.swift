@@ -12,8 +12,6 @@ class Downloader {
     var baseUrl: String
     var projectId: String
     var exportConfigId: String
-//    var customBundleName = "TexterifyLocalization.bundle"
-//    let suffix = ".lproj"
     
     init(baseUrl: String, projectId: String, exportConfigId: String) {
         self.baseUrl = baseUrl
@@ -61,7 +59,9 @@ class Downloader {
                         try FileManager.default.copyItem(at: destinationUrl, to: finalFile)
                         try FileManager.default.removeItem(at: destinationUrl)
                         completion()
-                    } catch {}
+                    } catch {
+                        print("there was an error")
+                    }
                 }
             }
         })
