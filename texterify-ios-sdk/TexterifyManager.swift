@@ -42,16 +42,16 @@ public class TexterifyManager {
             if !FileManager.default.fileExists(atPath: localizationFolderURL.path) {
                 try FileManager.default.createDirectory(at: localizationFolderURL, withIntermediateDirectories: true, attributes: nil)
             }
-            let localizationFile = localizationFolderURL.appendingPathComponent("Localization.strings")
+            let localizationFile = localizationFolderURL.appendingPathComponent("Localizable.strings")
             if FileManager.default.fileExists(atPath: localizationFile.path) {
                 try FileManager.default.removeItem(at: localizationFile)
             }
             FileManager.default.createFile(atPath: localizationFile.path, contents: nil, attributes: nil)
+            var stringChange = ""
             for pair in jsonData.data.texts {
-                let stringChange = "\"\(pair.key)\":\"\(pair.value)\";"
-                try stringChange.write(to: localizationFile, atomically: true, encoding: .utf8)
+                stringChange += "\"\(pair.key)\"=\"\(pair.value)\";\n"
             }
-            
+            try stringChange.write(to: localizationFile, atomically: true, encoding: .utf8)
         } catch let error as NSError {
             print(error)
         }
