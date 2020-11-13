@@ -17,6 +17,7 @@
 		1474A6B9250A65E2004F3D98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1474A6B8250A65E2004F3D98 /* Assets.xcassets */; };
 		1474A6BC250A65E3004F3D98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1474A6BA250A65E2004F3D98 /* LaunchScreen.storyboard */; };
 		1474A6C5250A6848004F3D98 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1474A6C7250A6848004F3D98 /* Localizable.strings */; };
+		14759F78255E8C72002A1E36 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 14759F77255E8C72002A1E36 /* README.md */; };
 		14BA08822510AAF200CA22C6 /* texterify_ios_sdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1474A67F250A5A99004F3D98 /* texterify_ios_sdk.framework */; };
 		14BA08832510AAF200CA22C6 /* texterify_ios_sdk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1474A67F250A5A99004F3D98 /* texterify_ios_sdk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		14E82F9525493CFF005F8EE6 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E82F9425493CFF005F8EE6 /* Downloader.swift */; };
@@ -63,6 +64,7 @@
 		1474A6BD250A65E3004F3D98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1474A6C6250A6848004F3D98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1474A6CA250B62B2004F3D98 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		14759F77255E8C72002A1E36 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		14E82F9425493CFF005F8EE6 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		14E82FA2254A97EB005F8EE6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,7 @@
 		1474A675250A5A99004F3D98 = {
 			isa = PBXGroup;
 			children = (
+				14759F77255E8C72002A1E36 /* README.md */,
 				1474A6A3250A6102004F3D98 /* .swiftlint.yml */,
 				1474A681250A5A99004F3D98 /* texterify-ios-sdk */,
 				1474A6AE250A65E1004F3D98 /* Example */,
@@ -236,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14759F78255E8C72002A1E36 /* README.md in Resources */,
 				1474A6A4250A6102004F3D98 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
