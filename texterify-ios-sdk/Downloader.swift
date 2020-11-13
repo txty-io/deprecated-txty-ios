@@ -12,12 +12,13 @@ class Downloader {
     var baseUrl: String
     var projectId: String
     var exportConfigId: String
-    static var dateFormatter = DateFormatter()
+    static let dateFormatter = DateFormatter()
 
     init(baseUrl: String, projectId: String, exportConfigId: String) {
         self.baseUrl = baseUrl
         self.projectId = projectId
         self.exportConfigId = exportConfigId
+        Downloader.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
     }
 
     func downloadLocalizationBundle(completion: @escaping () -> Void) {
@@ -25,7 +26,6 @@ class Downloader {
             return
         }
         let locale = "\(appLanguageCode)_\(regionCode)"
-        Downloader.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
         let timeStamp = Downloader.dateFormatter.string(from: Date())
         var components = URLComponents()
         components.scheme = "https"
