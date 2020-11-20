@@ -15,6 +15,7 @@ public class TexterifyManager {
     var baseUrl = ""
     var projectId = ""
     var exportConfigId = ""
+    var complitionHandler: ((String?, TexterifyError?) -> Void)?
 
     public init(baseUrl: String, projectId: String, exportConfigId: String) {
         self.baseUrl = baseUrl
@@ -22,9 +23,16 @@ public class TexterifyManager {
         self.exportConfigId = exportConfigId
     }
 
-    public func getUpdatedStrings() {
+    public func getUpdatedStrings( complitionHandler: @escaping (String?, TexterifyError?) -> Void) {
+        self.complitionHandler = complitionHandler
         let downloader = Downloader(baseUrl: self.baseUrl, projectId: self.projectId, exportConfigId: self.exportConfigId)
-        downloader.downloadLocalizationBundle(completion: self.parseData)
+        downloader.downloadLocalizationBundle { [weak self] (error) in
+            if error != nil {
+                complitionHandler( nil, error)
+            } else {
+                self?.parseData()
+            }
+        }
     }
 
     func parseData() {
@@ -37,8 +45,8 @@ public class TexterifyManager {
             let data = try Data(contentsOf: jsonFile)
             let jsonData = try decoder.decode(Model.self, from: data)
             self.createStringFiles(jsonData: jsonData)
-        } catch let error as NSError {
-            print(error)
+        } catch {
+            complitionHandler?(nil, .DecodingError)
         }
     }
 
@@ -66,8 +74,8 @@ public class TexterifyManager {
                 stringChange += "\"\(pair.key)\"=\"\(pair.value)\";\n"
             }
             try stringChange.write(to: localizationFile, atomically: true, encoding: .utf8)
-        } catch let error as NSError {
-            print(error)
+        } catch {
+            complitionHandler?(nil, .ErrorWritingToFile)
         }
     }
 
@@ -75,4 +83,10 @@ public class TexterifyManager {
         let localizationBundle = Bundle(path: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/\(bundleName)")
         return NSLocalizedString(key, tableName: nil, bundle: localizationBundle!, value: "", comment: "")
     }
+}
+
+public enum TexterifyError: Error {
+    case DecodingError
+    case InvalidURL
+    case ErrorWritingToFile
 }

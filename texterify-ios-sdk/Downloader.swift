@@ -21,7 +21,7 @@ class Downloader {
         Downloader.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
     }
 
-    func downloadLocalizationBundle(completion: @escaping () -> Void) {
+    func downloadLocalizationBundle(completion: @escaping (TexterifyError?) -> Void) {
         guard let appLanguageCode = Locale.current.languageCode, let regionCode = Locale.current.regionCode else {
             return
         }
@@ -37,7 +37,7 @@ class Downloader {
         ]
 
         guard let url = components.url else {
-            print("Invalid URL")
+            completion(.InvalidURL)
             return
         }
         let sessionConfig = URLSessionConfiguration.default
@@ -58,9 +58,9 @@ class Downloader {
                             try FileManager.default.removeItem(at: finalFile)
                         }
                         try FileManager.default.moveItem(at: destinationUrl, to: finalFile)
-                        completion()
+                        completion(nil)
                     } catch {
-                        print("there was an error")
+                        completion(.ErrorWritingToFile)
                     }
                 }
             }
