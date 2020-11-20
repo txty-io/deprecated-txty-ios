@@ -1,15 +1,12 @@
 # Texterify iOS sdk
 
 
-
+iOS SDK for Over-The-Air (OTA) translation translations with Texterify. 
 
 
 ## Usage
 
-
-
-### Getting Started
-
+Create an instance of  `TexterifyManager` and pass your Texterify configurations in the parameters. Call `getUpdatedStrings` at app startup or anywhere in your code. The SDK will download the new strings files and they can be accessed using `localisedString(key: String, tableName: String?, comment: String)`.   
 
 
 ## Version Compatibility
