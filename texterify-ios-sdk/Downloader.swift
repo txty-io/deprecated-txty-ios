@@ -12,41 +12,59 @@ class Downloader {
     var baseUrl: String
     var projectId: String
     var exportConfigId: String
-    var customBundleName = "TexterifyLocalization.bundle"
-    
+    static let dateFormatter = DateFormatter()
+
     init(baseUrl: String, projectId: String, exportConfigId: String) {
         self.baseUrl = baseUrl
         self.projectId = projectId
         self.exportConfigId = exportConfigId
+        Downloader.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
     }
-    
-    func downloadLocalizationBundle() {
-        let locale = Locale.current
-        // TODO: build url, using test for now
-        guard let url = URL(string: "") else {
+
+    func downloadLocalizationBundle(completion: @escaping (TexterifyError?) -> Void) {
+        guard let appLanguageCode = Locale.current.languageCode, let regionCode = Locale.current.regionCode else {
+            return
+        }
+        let locale = "\(appLanguageCode)_\(regionCode)"
+        let timeStamp = Downloader.dateFormatter.string(from: Date())
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = baseUrl
+        components.path = "/api/v1/projects/\(projectId)/export_configs/\(exportConfigId)/release"
+        components.queryItems = [
+            URLQueryItem(name: "locale", value: "\(locale)"),
+            URLQueryItem(name: "timestamp", value: timeStamp)
+        ]
+
+        guard let url = components.url else {
+            completion(.InvalidURL)
             return
         }
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        let task = session.dataTask(with: request) { _, _, _ in
-        }
-        task.resume()
-    }
-    
-    func saveFile() {
-        guard let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else {
-            return
-        }
-        do {
-            if Bundle(path: "\(documentDirectoryPath)/\(customBundleName)") == nil {
-                let documentDirectoryUrl = URL(fileURLWithPath: documentDirectoryPath)
-                try FileManager.default.createDirectory(at: documentDirectoryUrl.appendingPathComponent(customBundleName), withIntermediateDirectories: true, attributes: nil)
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+            if let error = error {
+                print("There was an error downloading the file: \(error.localizedDescription)\n")
+            } else if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
+                guard let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+                let finalFile = documentsUrl.appendingPathComponent("strings.json")
+
+                let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+                if let _ = try? data.write(to: destinationUrl) {
+                    do {
+                        if FileManager.default.fileExists(atPath: finalFile.path) {
+                            try FileManager.default.removeItem(at: finalFile)
+                        }
+                        try FileManager.default.moveItem(at: destinationUrl, to: finalFile)
+                        completion(nil)
+                    } catch {
+                        completion(.ErrorWritingToFile)
+                    }
+                }
             }
-        } catch let error as NSError {
-            // TODO: Deal with error
-            print(error.localizedDescription)
-        }
+        })
+        task.resume()
     }
 }
