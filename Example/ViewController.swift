@@ -14,14 +14,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let localizer = TexterifyManager(baseUrl: "texterify.allaboutapps.at", projectId: "8310ce77-652e-4c1a-b866-0b2234f60b53", exportConfigId: "bf14063e-cbae-4b30-9a6e-b2a4e1a9170e")
-        localizer.getUpdatedStrings(complitionHandler: { timpeStamp, error in
+        let localizer = TexterifyManager(baseUrl: "texterify.allaboutapps.at", projectId: "8310ce77-652e-4c1a-b866-0b2234f60b53", exportConfigId: "876165dc-c1f7-4a84-bb5e-b3adc28d3aea")
+        localizer.getUpdatedStrings(complitionHandler: { error in
             if error != nil {
                 print(error)
-            } else {
-                print(timpeStamp)
-            }
-        })
+            }        })
+        print(TexterifyManager.localisedString(key: "hello", tableName: nil, comment: ""))
         
     }
     
