@@ -42,6 +42,7 @@ class Downloader {
             errorCompletionHandler(.invalidURL)
             return
         }
+        
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig)
         var request = URLRequest(url: url)

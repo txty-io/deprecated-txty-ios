@@ -77,11 +77,11 @@ public class TexterifyManager {
         }
     }
 
-    public static func localisedString(key: String, tableName: String?, comment: String) -> String {
+    public static func localisedString(key: String, tableName: String?, comment: String, customBundle: Bundle = Bundle.main) -> String {
         if let localizationBundle = Bundle(path: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/\(bundleName)") {
             return NSLocalizedString(key, tableName: nil, bundle: localizationBundle, value: "", comment: comment)
         } else {
-            return NSLocalizedString(key, comment: comment)
+            return customBundle.localizedString(forKey: key, value: "", table: tableName)
         }
         
     }
