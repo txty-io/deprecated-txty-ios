@@ -17,11 +17,13 @@ public class TexterifyManager {
     private var projectId = ""
     private var exportConfigId = ""
     private var complitionHandler: ((TexterifyError?) -> Void)?
+    static var customBundle = Bundle.main
 
-    public init(baseUrl: String, projectId: String, exportConfigId: String) {
+    public init(baseUrl: String, projectId: String, exportConfigId: String, customBundle: Bundle = Bundle.main) {
         self.baseUrl = baseUrl
         self.projectId = projectId
         self.exportConfigId = exportConfigId
+        TexterifyManager.customBundle = customBundle
     }
 
     public func getUpdatedStrings( complitionHandler: @escaping (TexterifyError?) -> Void) {
@@ -81,7 +83,7 @@ public class TexterifyManager {
         if let localizationBundle = Bundle(path: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/\(bundleName)") {
             return NSLocalizedString(key, tableName: nil, bundle: localizationBundle, value: "", comment: comment)
         } else {
-            return NSLocalizedString(key, comment: comment)
+            return customBundle.localizedString(forKey: key, value: "", table: tableName)
         }
         
     }
