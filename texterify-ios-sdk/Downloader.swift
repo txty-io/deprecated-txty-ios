@@ -34,9 +34,9 @@ class Downloader {
             URLQueryItem(name: "locale", value: "\(locale)")
         ]
         let userDefault = UserDefaults.standard
-        if let timeStamp = userDefault.string(forKey: "texterify_timeStamp") {
-            components.queryItems?.append(URLQueryItem(name: "timestamp", value: timeStamp))
-        }
+//        if let timeStamp = userDefault.string(forKey: "texterify_timeStamp") {
+//            components.queryItems?.append(URLQueryItem(name: "timestamp", value: timeStamp))
+//        }
 
         guard let url = components.url else {
             errorCompletionHandler(.invalidURL)
