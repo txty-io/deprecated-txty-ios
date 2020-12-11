@@ -21,7 +21,7 @@ class Downloader {
         Downloader.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
     }
 
-    func downloadLocalizationBundle(successCompletionHandler:@escaping() -> (), errorCompletionHandler: @escaping (TexterifyError?) -> Void) {
+    func downloadLocalizationBundle(successCompletionHandler:@escaping() -> Void, errorCompletionHandler: @escaping (TexterifyError?) -> Void) {
         guard let appLanguageCode = Locale.current.languageCode, let regionCode = Locale.current.regionCode else {
             return
         }
@@ -34,9 +34,9 @@ class Downloader {
             URLQueryItem(name: "locale", value: "\(locale)")
         ]
         let userDefault = UserDefaults.standard
-//        if let timeStamp = userDefault.string(forKey: "texterify_timeStamp") {
-//            components.queryItems?.append(URLQueryItem(name: "timestamp", value: timeStamp))
-//        }
+        if let timeStamp = userDefault.string(forKey: "texterify_timeStamp") {
+            components.queryItems?.append(URLQueryItem(name: "timestamp", value: timeStamp))
+        }
 
         guard let url = components.url else {
             errorCompletionHandler(.invalidURL)
@@ -53,6 +53,7 @@ class Downloader {
                 guard let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
                 let finalFile = documentsUrl.appendingPathComponent("strings.json")
                 let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+                print(destinationUrl)
                 if let _ = try? data.write(to: destinationUrl) {
                     do {
                         if FileManager.default.fileExists(atPath: finalFile.path) {

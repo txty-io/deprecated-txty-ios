@@ -11,7 +11,16 @@ import Foundation
 public class TexterifyManager {
     static let bundleName = "TexterifyLocalization.bundle"
     static let suffix = ".lproj"
-    public static var timeStamp = ""
+    public static var timeStamp: String {
+        get {
+            return UserDefaults.standard.string(forKey: "texterify_timeStamp") ?? ""
+        }
+        set(newValue) {
+            let defaults = UserDefaults.standard
+            defaults.setValue(newValue, forKey: "texterify_timeStamp")
+        }
+    }
+
     private let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
     private var baseUrl = ""
     private var projectId = ""
@@ -26,9 +35,9 @@ public class TexterifyManager {
         TexterifyManager.customBundle = customBundle
     }
 
-    public func getUpdatedStrings( complitionHandler: @escaping (TexterifyError?) -> Void) {
+    public func getUpdatedStrings(complitionHandler: @escaping (TexterifyError?) -> Void) {
         self.complitionHandler = complitionHandler
-        let downloader = Downloader(baseUrl: self.baseUrl, projectId: self.projectId, exportConfigId: self.exportConfigId)
+        let downloader = Downloader(baseUrl: baseUrl, projectId: projectId, exportConfigId: exportConfigId)
         downloader.downloadLocalizationBundle(successCompletionHandler: parseData, errorCompletionHandler: complitionHandler)
     }
 
@@ -42,9 +51,7 @@ public class TexterifyManager {
             let data = try Data(contentsOf: jsonFile)
             let jsonData = try decoder.decode(Model.self, from: data)
             TexterifyManager.timeStamp = jsonData.timestamp
-            let defaults = UserDefaults.standard
-            defaults.setValue(jsonData.timestamp, forKey: "texterify_timeStamp")
-            self.createStringFiles(jsonData: jsonData)
+            createStringFiles(jsonData: jsonData)
         } catch {
             complitionHandler?(.decodingError)
         }
@@ -59,7 +66,7 @@ public class TexterifyManager {
             if Bundle(path: "\(documentDirectory.path)/\(TexterifyManager.bundleName)") == nil {
                 try FileManager.default.createDirectory(at: documentDirectory.appendingPathComponent(TexterifyManager.bundleName), withIntermediateDirectories: true, attributes: nil)
             }
-    
+
             let localizationFolderURL = documentDirectory.appendingPathComponent(TexterifyManager.bundleName).appendingPathComponent(jsonData.data.languageCode + TexterifyManager.suffix)
             if !FileManager.default.fileExists(atPath: localizationFolderURL.path) {
                 try FileManager.default.createDirectory(at: localizationFolderURL, withIntermediateDirectories: true, attributes: nil)
@@ -85,7 +92,6 @@ public class TexterifyManager {
         } else {
             return customBundle.localizedString(forKey: key, value: "", table: tableName)
         }
-        
     }
 }
 
