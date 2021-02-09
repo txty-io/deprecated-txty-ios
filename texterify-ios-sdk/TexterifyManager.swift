@@ -47,6 +47,7 @@ public class TexterifyManager {
         }
         let jsonFile = documentDirectory.appendingPathComponent("strings.json")
         do {
+            print("💬texterify-ios-sdk: parsing string file")
             let decoder = JSONDecoder()
             let data = try Data(contentsOf: jsonFile)
             let jsonData = try decoder.decode(Model.self, from: data)
@@ -59,6 +60,7 @@ public class TexterifyManager {
 
     func createStringFiles(jsonData: Model) {
         do {
+            print("💬texterify-ios-sdk: creating Localizable.strings")
             guard let documentDirectory = documentDirectory else {
                 return
             }

@@ -46,14 +46,15 @@ class Downloader {
         let session = URLSession(configuration: sessionConfig)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        print("💬texterify-ios-sdk: download initializing ")
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             if error != nil {
+                print("💬texterify-ios-sdk: could not download new strings")
                 errorCompletionHandler(.downloadError)
             } else if let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 {
                 guard let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
                 let finalFile = documentsUrl.appendingPathComponent("strings.json")
                 let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
-                print(destinationUrl)
                 if let _ = try? data.write(to: destinationUrl) {
                     do {
                         if FileManager.default.fileExists(atPath: finalFile.path) {
@@ -61,7 +62,7 @@ class Downloader {
                         }
                         try FileManager.default.moveItem(at: destinationUrl, to: finalFile)
                         successCompletionHandler()
-                    } catch {
+                    } catch {print("💬texterify-ios-sdk: could not write to file")
                         errorCompletionHandler(.errorWritingToFile)
                     }
                 }
