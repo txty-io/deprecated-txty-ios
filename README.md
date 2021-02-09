@@ -4,7 +4,7 @@
 [![SPM ](https://img.shields.io/badge/SPM-Compatible-orange)](https://swift.org/package-manager/)
 
 
-The iOS SDK for Over-The-Air (OTA) translations with [Texterify] (https://github.com/chrztoph/texterify/). 
+The iOS SDK for Over-The-Air (OTA) translations with [Texterify](https://github.com/chrztoph/texterify/). 
 
 
 ## Usage
