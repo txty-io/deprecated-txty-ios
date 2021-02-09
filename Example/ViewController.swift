@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let localizer = TexterifyManager(baseUrl: "texterify.allaboutapps.at", projectId: "8310ce77-652e-4c1a-b866-0b2234f60b53", exportConfigId: "876165dc-c1f7-4a84-bb5e-b3adc28d3aea")
+        let localizer = TexterifyManager(baseUrl: "texterify.allaboutapps.at", projectId: "c757a671-4747-4d20-b2ed-7f76149725df", exportConfigId: "d21a01e2-87ee-4b1e-ba0a-d5a46623c3e7")
         localizer.getUpdatedStrings(complitionHandler: { error in
             if error != nil {
                 print(error)
