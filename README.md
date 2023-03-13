@@ -12,7 +12,7 @@ The iOS SDK for Over-The-Air (OTA) translations with [Texterify](https://github.
 In order to download new strings at app startup, in  `AppDelegate` create an instance of `TexterifyManager` and pass your Texterify project configurations in the parameters. After that call `getUpdatedStrings(complitionHandler:)`. 
 ```swift
 func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    let localizer = TexterifyManager(baseUrl: "https://texterify.mydomain.io",
+    let localizer = TexterifyManager(baseUrl: "app.texterify.com",
                                      projectId: "my-project-id",
                                      exportConfigId: "my-export-config-id")
     localizer.getUpdatedStrings(complitionHandler: { _ in
