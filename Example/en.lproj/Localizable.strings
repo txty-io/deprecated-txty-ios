@@ -1,10 +1,2 @@
-/* 
-  Localizable.strings
-  texterify-ios-sdk
-
-  Created by Lyn Almasri on 10.09.20.
-  Copyright © 2020 All About Apps. All rights reserved.
-*/
-"app_name" = "Texterify example";
-"hello" = "Hello!";
-"hello_world" = "Hello again";
+"app_name" = "App Name";
+"hello_world" = "Hello World";
