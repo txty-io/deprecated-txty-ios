@@ -1,23 +1,15 @@
-//
-//  TexterifyManager.swift
-//  texterify-ios-sdk
-//
-//  Created by Lyn Almasri on 10.09.20.
-//  Copyright © 2020 All About Apps. All rights reserved.
-//
-
 import Foundation
 
 public class TexterifyManager {
     static let bundleName = "TexterifyLocalization.bundle"
     static let suffix = ".lproj"
-    public static var timeStamp: String {
+    public static var timestamp: String {
         get {
-            return UserDefaults.standard.string(forKey: "texterify_timeStamp") ?? ""
+            return UserDefaults.standard.string(forKey: "texterify_timestamp") ?? ""
         }
         set(newValue) {
             let defaults = UserDefaults.standard
-            defaults.setValue(newValue, forKey: "texterify_timeStamp")
+            defaults.setValue(newValue, forKey: "texterify_timestamp")
         }
     }
 
@@ -47,23 +39,25 @@ public class TexterifyManager {
         }
         let jsonFile = documentDirectory.appendingPathComponent("strings.json")
         do {
-            print("💬texterify-ios-sdk: parsing string file")
+            print("🌍 texterify-ios-sdk: parsing release file")
             let decoder = JSONDecoder()
             let data = try Data(contentsOf: jsonFile)
             let jsonData = try decoder.decode(Model.self, from: data)
-            TexterifyManager.timeStamp = jsonData.timestamp
+            TexterifyManager.timestamp = jsonData.timestamp
             createStringFiles(jsonData: jsonData)
         } catch {
+            print("🌍 texterify-ios-sdk: error while decoding release file")
             complitionHandler?(.decodingError)
         }
     }
 
     func createStringFiles(jsonData: Model) {
         do {
-            print("💬texterify-ios-sdk: creating Localizable.strings")
+            print("🌍 texterify-ios-sdk: creating Localizable.strings")
             guard let documentDirectory = documentDirectory else {
                 return
             }
+
             // Create custom bundle if it does not exist
             if Bundle(path: "\(documentDirectory.path)/\(TexterifyManager.bundleName)") == nil {
                 try FileManager.default.createDirectory(at: documentDirectory.appendingPathComponent(TexterifyManager.bundleName), withIntermediateDirectories: true, attributes: nil)
