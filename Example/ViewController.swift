@@ -1,26 +1,22 @@
-//
-//  ViewController.swift
-//  Example
-//
-//  Created by Lyn Almasri on 10.09.20.
-//  Copyright © 2020 All About Apps. All rights reserved.
-//
-
 import UIKit
 import texterify_ios_sdk
 
 class ViewController: UIViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let localizer = TexterifyManager(baseUrl: "texterify.allaboutapps.at", projectId: "c757a671-4747-4d20-b2ed-7f76149725df", exportConfigId: "d21a01e2-87ee-4b1e-ba0a-d5a46623c3e7")
+        let localizer = TexterifyManager(
+            baseUrl: "app.texterify.com",
+            projectId: "f2f0a0cb-3a56-4cc2-8e6a-38be2e6a7b38",
+            exportConfigId: "8976d13d-f48e-4c8a-9105-69ace9adc4c4"
+        )
+        
         localizer.getUpdatedStrings(complitionHandler: { error in
             if error != nil {
-                print(error)
-            }        })
-        print(TexterifyManager.localisedString(key: "hello", tableName: nil, comment: ""))
+                print(error!)
+            }
+        })
         
+        print("🚀 " + TexterifyManager.localisedString(key: "hello_world", tableName: nil, comment: ""))
     }
-    
 }
